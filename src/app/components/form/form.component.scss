@@ -1,0 +1,56 @@
+
+.modal_div {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.5);
+  opacity: 1;
+  animation: open 1s;
+
+  form {
+    width: 800px;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    margin-left: -400px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+
+    h2 {
+      text-align: center;
+    }
+
+    mat-form-field {
+      display: block;
+    }
+
+    button {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.close_modal {
+  animation: close 1s;
+}
+
+@keyframes open {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes close {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0
+  }
+}

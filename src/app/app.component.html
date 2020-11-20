@@ -1,23 +1,14 @@
 <div class="container">
-  <form [formGroup]="form">
-    <mat-form-field>
-      <mat-label>Title</mat-label>
-      <input matInput type="text" autocomplete="off" formControlName="title">
-    </mat-form-field>
+  <h1>TODO list</h1>
 
-    <mat-form-field>
-      <mat-label>Text</mat-label>
-      <input matInput type="text" autocomplete="off" formControlName="text">
-    </mat-form-field>
-
-    <button mat-raised-button type="button" color="primary" (click)="addNewTask()" [disabled]="form.invalid">Add
-    </button>
-  </form>
+  <button mat-raised-button type="button" color="primary" (click)="openForm()">Add</button>
+  <span>The TODO list has <strong>{{toDoArray.length}}</strong> tasks</span>
 
   <mat-divider></mat-divider>
 
   <app-task *ngFor="let task of toDoArray"
             [task]="task"
-            (onDelete)="deleteSelectedTask($event)"
   ></app-task>
 </div>
+
+<app-form *ngIf="isOpenForm" (onClose)="closeForm()"></app-form>

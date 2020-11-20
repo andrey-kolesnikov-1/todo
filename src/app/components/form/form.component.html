@@ -1,0 +1,20 @@
+<div class="modal_div" [ngClass]="{
+  close_modal: isClose
+}">
+  <form [formGroup]="form">
+    <h2>Add new task</h2>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" autocomplete="off" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Text</mat-label>
+      <input matInput type="text" autocomplete="off" formControlName="text">
+    </mat-form-field>
+
+    <button mat-raised-button type="button" color="primary" (click)="addNewTask()" [disabled]="form.invalid">Add
+    </button>
+    <button mat-raised-button type="button" color="primary" (click)="closeForm()">Cancel</button>
+  </form>
+</div>

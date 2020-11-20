@@ -5,8 +5,12 @@
   border-radius: 5px;
   margin: 100px auto 0;
 
-  mat-form-field {
-    display: block;
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    margin-right: 1rem;
   }
 
   mat-divider {

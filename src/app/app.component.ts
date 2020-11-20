@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from "./shared/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TaskService} from "./shared/task.service";
 
 @Component({
   selector: 'app-root',
@@ -9,26 +10,22 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class AppComponent implements OnInit {
   title = 'todo';
-  form: FormGroup;
   toDoArray: Task[] = [];
-  idTask: number = 0;
+  isOpenForm: boolean = false;
 
-  constructor() {
+  constructor(private data: TaskService) {
   }
 
   ngOnInit() {
-    this.form = new FormGroup({
-      title: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      text: new FormControl('', [Validators.required, Validators.minLength(3)])
-    })
+    this.toDoArray = this.data.getTaskArray();
+    this.data.taskStream$.subscribe(tasks => this.toDoArray = tasks);
   }
 
-  addNewTask() {
-    this.toDoArray.unshift({title: this.form.value.title, text: this.form.value.text, id: ++this.idTask});
-    this.form.reset();
+  openForm() {
+    this.isOpenForm = true;
   }
 
-  deleteSelectedTask(id: number) {
-    this.toDoArray = this.toDoArray.filter(value => value.id != id);
+  closeForm() {
+    this.isOpenForm = false;
   }
 }
