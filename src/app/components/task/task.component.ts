@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Task} from "../../shared/task";
 import {TaskService} from "../../shared/task.service";
 
@@ -7,14 +7,11 @@ import {TaskService} from "../../shared/task.service";
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
 
   @Input() task: Task;
 
   constructor(private data: TaskService) {
-  }
-
-  ngOnInit(): void {
   }
 
   deleteTask() {

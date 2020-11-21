@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Task} from "./shared/task";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {TaskService} from "./shared/task.service";
 
 @Component({
@@ -9,7 +8,7 @@ import {TaskService} from "./shared/task.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'todo';
+  title: string = 'todo';
   toDoArray: Task[] = [];
   isOpenForm: boolean = false;
 
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toDoArray = this.data.getTaskArray();
     this.data.taskStream$.subscribe(tasks => this.toDoArray = tasks);
   }
 

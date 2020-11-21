@@ -14,16 +14,13 @@ export class TaskService {
   constructor() {
   }
 
-  getTaskArray() {
-    return this.taskArray;
-  }
-
   addNewTask(title: string, text: string) {
     this.taskArray.unshift({title: title, text: text, id: ++this.idTask});
+    this.taskStream$.next(this.taskArray);
   }
 
   deleteSelectedTask(id: number) {
-    this.taskArray = this.taskArray.filter(value => value.id != id);
+    this.taskArray = this.taskArray.filter(value => value.id !== id);
     this.taskStream$.next(this.taskArray);
   }
 }
